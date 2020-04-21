@@ -10,3 +10,5 @@
 8. Bonus points: fork this repo, implement your changes in your fork and create a pull request to this repo.
 
 Note: application must be written in Python.
+
+Hint: you can add comments to describe your code. You can also provide multiple solutions if there is more than one good way to solve something.
