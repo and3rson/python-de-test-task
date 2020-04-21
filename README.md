@@ -7,5 +7,6 @@
 5. Bonus points: implement a simple web-server that will start data migration when a POST request is received.
 6. Bonus points: edit `inserter/main.py`, decrease the insertion interval to 0 (line 28) and see if your script still works.
 7. Bonus points: make the ETL process configurable so that if `events` table changes, code change will not be required (e. g. define ETL mapping via some seperate YAML config file.)
+8. Bonus points: fork this repo, implement your changes in your fork and create a pull request to this repo.
 
 Note: application must be written in Python.
