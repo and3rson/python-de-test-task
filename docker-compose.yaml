@@ -1,0 +1,35 @@
+version: '3.1'
+services:
+  maindb:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: &main_user mainuser
+      POSTGRES_PASSWORD: &main_password secret
+      POSTGRES_DB: main
+    volumes:
+      - ./init_scripts/init_main.sql:/docker-entrypoint-initdb.d/init_main.sql
+
+  stabledb:
+    image: mariadb:10.5-bionic
+    environment:
+      MYSQL_ROOT_PASSWORD: donotusethis
+      MYSQL_USER: stableuser
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: stable
+    volumes:
+      - ./init_scripts/init_stable.sql:/docker-entrypoint-initdb.d/init_stable.sql
+
+  inserter:
+    image: test-inserter
+    build:
+      context: inserter
+    environment:
+      PYTHONUNBUFFERED: 1
+      DB_HOST: maindb
+      DB_USER: *main_user
+      DB_PASSWORD: *main_password
+      DB_NAME: main
+
+volumes:
+  maindb:
+  stabledb:
