@@ -25,9 +25,9 @@ def main():
             time.sleep(1)
     print('Connected to PostgreSQL')
     while True:
+        time.sleep(random.random() / 5)
         key = gen.slug()
         value = gen.sentence()
-        time.sleep(random.random() / 5)
         pk = uuid.uuid1()
         cursor = conn.cursor()
         cursor.execute(
